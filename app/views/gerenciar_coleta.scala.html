@@ -1,0 +1,63 @@
+@(Col: Coleta)//Todos os parametros para a pagina
+
+@main("Gerenciar Coleta") { //Chamada Padrao
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Gerenciar Campanha
+        </div>
+        <div class="panel-body">
+          <form role="form">
+            <div class="form-group">
+              <label class="col-sm-3 control-label" for="card-holder-name">Tipo</label>
+              <div class="col-md-9">
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                    Amostra
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                    Atividade
+                  </label>
+                </div>
+                <select class="form-control">
+                  <option>Selecionar</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>ID Campanha</label>
+                <input type="text" class="form-control" placeholder="">
+                <label>Data de Início</label>
+                <input type="datetime" class="form-control" placeholder="">
+                <label>Descrição</label>
+                <textarea class="form-control counted" name="message" placeholder="" rows="5" style="margin-bottom:10px;"></textarea>
+                <label>Calha</label>
+                <input type="text" class="form-control" placeholder="">
+                </div>
+                <label>Selecionar lajes</label>
+                <input type="text" class="form-control" placeholder="">
+              </div>
+                <!-- Form actions -->
+              <div class="form-group">
+                <div class="col-md-12 text-right">
+                  <button type="submit" class="btn btn-primary btn">Cancelar</button>
+                  <button type="submit" class="btn btn-primary btn">Confirmar</button>
+                </div>
+              </div>
+            </div>
+          <!-- /.panel-body -->
+      </div>
+        <!-- /.panel -->
+    </div>
+      <!-- /.col-lg-12 -->
+  </div>
+</div>
+}
