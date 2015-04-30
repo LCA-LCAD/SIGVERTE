@@ -8,31 +8,28 @@
           Gerenciar Laje
         </div>
         <div class="panel-body">
-          <form role="form" name="formCalha" onsubmit="return validaFormCalha()">
+          <form role="form" name="formLaje" onsubmit="return validaFormCalha()" action="@router.Application.save()" method="post">
             <div class="panel-body">
               <form role="form">
                 <div class="form-group">
-                  <label>Calha</label>
-                  <input type="text" class="form-control" placeholder="">
                   <label>Laje</label>
-                  <input type="text" class="form-control" placeholder="">
+                  <input type="text" class="form-control" name="id" placeholder="">
                 </div>
 
                 <div class="form-group">
                   <label>Descrição</label>
-                  <textarea class="form-control counted" name="message" placeholder="" rows="5" style="margin-bottom:10px;"></textarea>
+                  <textarea class="form-control counted" name="descricao" placeholder="" rows="5" style="margin-bottom:10px;"></textarea>
                 </div>
                 <div class="input-group">
                   <input type="text" class="form-control">
                   <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Inserir Imagens</button>
+                    <button class="btn btn-default" name="imagens" type="button">Inserir Imagens</button>
                   </span>
                 </div>
               </form>
                 <!-- Form actions -->
               <div class="form-group">
                 <div class="col-md-12 text-right">
-                  <button type="submit" class="btn btn-primary btn">Cancelar</button>
                   <button type="submit" class="btn btn-primary btn">Confirmar</button>
                 </div>
               </div>
