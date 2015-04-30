@@ -8,7 +8,7 @@
           Gerenciar Amostra
         </div>
         <div class="panel-body">
-          <form role="form" name="formCalha" onsubmit="return validaFormCalha()">
+          <form role="form" name="formCalha" onsubmit="return validaFormCalha()" action="/amostra" method="post">
             <div class="form-group">
               <label>Calha</label>
               <input type="text" class="form-control" placeholder="" name="numCalha">
@@ -23,47 +23,47 @@
             </div>
             <div class="form-group">
               <label>Id da Amostra</label>
-              <input type="text" class="form-control" placeholder="" name="numCalha">
+              <input type="text" class="form-control" placeholder="" name="id">
             </div>
             <div class="form-group">
               <label>Data da Inserção</label>
-              <input type="date" class="form-control" placeholder="" name="numCalha">
+              <input type="date" class="form-control" placeholder="" name="dataInsercao">
             </div>
             <div class="form-group">
               <label>Data de Exclusão</label>
-              <input type="date" class="form-control" placeholder="" name="numCalha">
+              <input type="date" class="form-control" placeholder="" name="dataExclusao">
             </div>
             <div class="form-group">
               <label>Data da Coleta</label>
-              <input type="date" class="form-control" placeholder="" name="numCalha">
+              <input type="date" class="form-control" placeholder="" name="dataColeta">
             </div>
             <div class="form-group">
               <label>Descrição da Amostra</label>
-              <textarea class="form-control counted" name="DHistorico" placeholder="" rows="5" style="margin-bottom:10px;"></textarea>
+              <textarea class="form-control counted" name="descricao" placeholder="" rows="5" style="margin-bottom:10px;"></textarea>
             </div>
             <div class="form-group">
               <label>Coordenada da Amostra</label>
               <div class="row">
-                <label class="col-sm-3 control-label" for="ProfissãoSuspeito">X : </label>
+                <label class="col-sm-3 control-label">X : </label>
                 <div class="col-xs-3">
-                  <input type="text" class="form-control" name="ProfissãoSuspeito" id="ProfissãoSuspeito" placeholder="">
+                  <input type="text" class="form-control" name="x" placeholder="">
                 </div>
-                <label class="col-sm-3 control-label" for="Fone1">Y : </label>
+                <label class="col-sm-3 control-label">Y : </label>
                 <div class="col-xs-3">
-                  <input type="text" class="form-control" maxlength="14" name="Fone1" id="txtFone" onkeyup="mask_fone();" placeholder="" required="required">
+                  <input type="text" class="form-control" maxlength="14" name="y">
                 </div>
               </div>
             </div>
             <label>Inserir imagens</label>
             <div class="input-group">
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" name="imagens">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button">Selecionar</button>
               </span>
             </div>
             <div class="form-group">
               <label>Comentários</label>
-              <textarea class="form-control counted" name="DHistorico" placeholder="" rows="5" style="margin-bottom:10px;"></textarea>
+              <textarea class="form-control counted" name="comentarios" placeholder="" rows="5" style="margin-bottom:10px;"></textarea>
             </div>
 
             <div class="form-group">

@@ -21,7 +21,8 @@ public class Amostra extends Model {
     private Date dataExclusao;
     private Date dataColeta;
     private String Descricao;
-    private Point coordenada;
+    private Point x;
+    private Point y;
     @OneToMany
     private List<File> imagens;
     @OneToMany

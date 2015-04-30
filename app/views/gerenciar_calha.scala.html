@@ -8,18 +8,22 @@
           Gerenciar Calha
         </div>
         <div class="panel-body">
-          <form role="form" name="formCalha" onsubmit="return validaFormCalha()">
+          <form role="form" name="formCalha" onsubmit="return validaFormCalha()" action="/calha" method="post">
             <div class="form-group">
               <label>Calha</label>
-              <input type="text" class="form-control" placeholder="" name="numCalha">
+              <input type="text" class="form-control" placeholder="" name="id">
             </div>
             <div class="form-group">
               <label>Dados Históricos</label>
-              <textarea class="form-control counted" name="DHistorico" placeholder="" rows="5" style="margin-bottom:10px;"></textarea>
+              <textarea class="form-control counted" name="dadosHistoricos" placeholder="" rows="5" style="margin-bottom:10px;"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Listar Lajes Pertencentes á Calha</label>
+              <textarea class="form-control counted" name="lajes" placeholder="" rows="5" style="margin-bottom:10px;"></textarea>
             </div>
             <div class="form-group">
               <div class="col-md-12 text-right">
-                <button type="submit" class="btn btn-primary btn">Enviar Formulário</button>
+                <button type="submit" class="btn btn-primary btn">Confirmar</button>
               </div>
             </div>
           </form>
