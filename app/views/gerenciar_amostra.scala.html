@@ -1,4 +1,4 @@
-@(Ams: Amostra)//Todos os parametros para a pagina
+@(Ams: Amostra, Col: Coleta, cal: Calha, laj: Laje)//Todos os parametros para a pagina
 
 @main("Gerenciar Amostra") { //Chamada Padrao
   <div class="row">
@@ -11,15 +11,15 @@
           <form role="form" name="formCalha" onsubmit="return validaFormCalha()" action="/amostra" method="post">
             <div class="form-group">
               <label>Calha</label>
-              <input type="text" class="form-control" placeholder="" name="numCalha">
+              <input type="text" class="form-control" placeholder="" value="cal.getId()">
             </div>
             <div class="form-group">
               <label>Laje</label>
-              <input type="text" class="form-control" placeholder="" name="numCalha">
+              <input type="text" class="form-control" placeholder="" value="laj.getId()">
             </div>
             <div class="form-group">
               <label>Id Campanha</label>
-              <input type="text" class="form-control" placeholder="" name="numCalha">
+              <input type="text" class="form-control" placeholder="" value="Col.getId()">
             </div>
             <div class="form-group">
               <label>Id da Amostra</label>
@@ -46,11 +46,11 @@
               <div class="row">
                 <label class="col-sm-3 control-label">X : </label>
                 <div class="col-xs-3">
-                  <input type="text" class="form-control" name="x" placeholder="">
+                  <input type="text" class="form-control" name="coordenada.x" placeholder="">
                 </div>
                 <label class="col-sm-3 control-label">Y : </label>
                 <div class="col-xs-3">
-                  <input type="text" class="form-control" maxlength="14" name="y">
+                  <input type="text" class="form-control" maxlength="14" name="coordenada.y">
                 </div>
               </div>
             </div>
