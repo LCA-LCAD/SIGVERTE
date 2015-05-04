@@ -2,8 +2,11 @@ package controllers;
 
 import models.Coleta;
 import play.*;
+import play.api.mvc.*;
 import play.mvc.*;
 
+import play.mvc.Controller;
+import play.mvc.Result;
 import views.html.*;
 
 
@@ -28,5 +31,8 @@ public class Application extends Controller {
         coletas.add(new Coleta(Long.parseLong("1"),"Campanha",new Date(),"teste1"));
         coletas.add(new Coleta(Long.parseLong("2"),"Campanha",new Date(),"teste2"));
         return ok(gerenciar_amostras.render(coletas));
+    }
+    public static Result visualizarColeta(Long id){
+        return ok();
     }
 }

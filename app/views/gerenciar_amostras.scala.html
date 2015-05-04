@@ -1,5 +1,30 @@
 @(coletas : List[Coleta])
 
 @main("Gerenciar Coletas"){
-
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#table').DataTable();
+        } );
+    </script>
+    <table id="table" class="table-bordered table-responsive">
+        <thead>
+            <th>Id</th>
+            <th>Data</th>
+            <th>Descricao</th>
+            <th>Acao</th>
+        </thead>
+        <tbody>
+            @coletas.map{f => <tr>
+                <td>@f.getId</td>
+                <td>@f.getData</td>
+                <td>@f.getDescricao</td>
+                <td><a href="/visualizarColeta?id=@f.getId"> <button class="glyphicon glyphicon-pencil"></button></a>
+                    <a href="/visualizarColeta?id=@f.getId"> <button class="glyphicon glyphicon-remove"></button></a>
+                </td>
+            </tr>}
+        </tbody>
+    </table>
 }

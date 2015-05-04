@@ -7,6 +7,7 @@ GET         /                    controllers.Application.index()
 
 POST        /addAmostra          controllers.Amostras.addAmostra()
 GET         /test                controllers.Application.test()
+GET         /visualizarColeta controllers.Application.visualizarColeta(id:Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file        controllers.Assets.at(path="/public", file)
