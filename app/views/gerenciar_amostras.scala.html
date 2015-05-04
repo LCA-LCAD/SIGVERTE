@@ -19,7 +19,7 @@
         <tbody>
             @coletas.map{f => <tr>
                 <td>@f.getId</td>
-                <td>@f.getData</td>
+                <td>@f.getDateFormatted</td>
                 <td>@f.getDescricao</td>
                 <td><a href="/visualizarColeta?id=@f.getId"> <button class="glyphicon glyphicon-pencil"></button></a>
                     <a href="/visualizarColeta?id=@f.getId"> <button class="glyphicon glyphicon-remove"></button></a>

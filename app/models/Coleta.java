@@ -3,6 +3,7 @@ package models;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -74,5 +75,9 @@ public class Coleta  extends Model{
 
     public void setLajes(List<Laje> lajes) {
         this.lajes = lajes;
+    }
+    public String getDateFormatted(){
+        SimpleDateFormat sf = new SimpleDateFormat("dd-MM-YYYY");
+        return sf.format(this.data);
     }
 }
