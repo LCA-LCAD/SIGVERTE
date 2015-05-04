@@ -4,10 +4,9 @@
 
 # Home page
 GET         /                    controllers.Application.index()
-POST        /amostra             controllers.Application.addAmostra()
-POST        /coleta              controllers.Application.addColeta()
-POST        /calha               controllers.Application.addCalha()
-POST        /laje                controllers.Application.addLaje()
+
+POST        /addAmostra          controllers.Amostras.addAmostra()
+GET         /test                controllers.Application.test()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file        controllers.Assets.at(path="/public", file)

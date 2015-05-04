@@ -1,6 +1,6 @@
-@(Ams: Amostra, Col: Coleta, cal: Calha, laj: Laje)//Todos os parametros para a pagina
+@(Ams: Amostra, Col: Coleta, cal: Calha, laj: Laje)
 
-@main("Gerenciar Amostra") { //Chamada Padrao
+@main("Gerenciar Amostra") {
   <div class="row">
     <div class="col-lg-12">
       <div class="panel panel-default">
@@ -8,18 +8,18 @@
           Gerenciar Amostra
         </div>
         <div class="panel-body">
-          <form role="form" name="formCalha" onsubmit="return validaFormCalha()" action="/amostra" method="post">
+          <form role="form" name="formCalha" action="/addAmostra" method="post">
             <div class="form-group">
               <label>Calha</label>
-              <input type="text" class="form-control" placeholder="" value="cal.getId()">
+              <input type="text" class="form-control" placeholder="" value="@cal.getId()">
             </div>
             <div class="form-group">
               <label>Laje</label>
-              <input type="text" class="form-control" placeholder="" name="laj.setId()">
+              <input type="text" class="form-control" placeholder="" name="@laj.getId()">
             </div>
             <div class="form-group">
               <label>Id Campanha</label>
-              <input type="text" class="form-control" placeholder="" value="Col.setId()">
+              <input type="text" class="form-control" placeholder="" value="@Col.getId()">
             </div>
             <div class="form-group">
               <label>Id da Amostra</label>
@@ -56,7 +56,7 @@
             </div>
             <label>Inserir imagens</label>
             <div class="input-group">
-              <input type="text" class="form-control" name="imagens">
+              <input type="file" class="form-control" name="imagens">
               <span class="input-group-btn">
                 <button class="btn btn-default" type="button">Selecionar</button>
               </span>

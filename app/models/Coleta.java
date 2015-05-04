@@ -21,6 +21,13 @@ public class Coleta  extends Model{
     @ManyToMany
     private List<Laje> lajes;
 
+    public Coleta(Long id, String tipo, Date data, String descricao) {
+        this.id = id;
+        this.tipo = tipo;
+        this.data = data;
+        this.descricao = descricao;
+    }
+
     public Long getId() {
         return id;
     }
