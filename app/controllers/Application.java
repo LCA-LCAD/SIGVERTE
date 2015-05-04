@@ -28,7 +28,7 @@ public class Application extends Controller {
 
     public static Result test(){
         ArrayList<Coleta> coletas = new ArrayList<>();
-        coletas.add(new Coleta(Long.parseLong("1"),"Campanha",new Date(),"teste1"));
+        coletas.add(new Coleta(Long.parseLong("1"),"Campanha",new Date("07/22/2014"),"teste1"));
         coletas.add(new Coleta(Long.parseLong("2"),"Campanha",new Date(),"teste2"));
         return ok(gerenciar_amostras.render(coletas));
     }
