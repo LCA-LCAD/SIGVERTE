@@ -1,39 +1,78 @@
-@(cal : Calha)
+@(formCalha: Form[Calha])
+@import helper._
 
-@main("Gerenciar Calha") {
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          Gerenciar Calha
+@main("Cadastrar Calha") {
+    @helper.form(action = routes.Calhas.novaCalha) {
+        </br>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Gerenciar Calha</h4>
+                    </div>
+                    <div class="panel-body">
+                        <legend><h4>Cadastrar Calha</h4></legend>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-sm-2 control-label" for="NomeCalha">Calha: </label>
+                                <div class="col-sm-10">
+                                    <input type="select" class="form-control" name="id" id="id" placeholder="Insira a identificação da Calha" required="required">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-sm-2 control-label" for="dadosHistoricos">
+                                    Dados Históricos Digitalizaos: </label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control counted" name="dadosHistoricos" id="dadosHistoricos" placeholder="Insira informações históricas sobre a Calha que está sendo cadastrada." rows="5" style="margin-bottom : 10 px ;"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-sm-2 control-label" for="NomeRes">Inserir Imagens: </label>
+                                <div class="col-sm-10">
+                                    <div class="input-group custom-search-form">
+                                        <input type="text" placeholder="Insira imagens relacionadas a esta calha" class="form-control">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button">
+                                                <span>Selecionar</span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <label class="col-sm-2 control-label" for="NomeRes">Inserir Documentos Históricos: </label>
+                                <div class="col-sm-10">
+                                    <div class="input-group custom-search-form">
+                                        <input type="text" placeholder="Insira documentos históricos relacionados a esta calha" class="form-control">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button">
+                                                <span>Selecionar</span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 text-right">
+                                <button type="submit" class="btn btn-primary btn">Cadastrar</button>
+                            </div>
+                        </div>
+                            <!-- /.row (nested) -->
+                    </div>
+                        <!-- /.panel-body -->
+                </div>
+                    <!-- /.panel -->
+            </div>
+                <!-- /.col-lg-12 -->
         </div>
-        <div class="panel-body">
-          <form role="form" name="formCalha" onsubmit="return validaFormCalha()" action="/calha" method="post">
-            <div class="form-group">
-              <label>Calha</label>
-              <input type="text" class="form-control" placeholder="" name="id">
-            </div>
-            <div class="form-group">
-              <label>Dados Históricos</label>
-              <textarea class="form-control counted" name="dadosHistoricos" placeholder="" rows="5" style="margin-bottom:10px;"></textarea>
-            </div>
-            <div class="form-group">
-              <label>Listar Lajes Pertencentes á Calha</label>
-              <textarea class="form-control counted" name="lajes" placeholder="" rows="5" style="margin-bottom:10px;"></textarea>
-            </div>
-            <div class="form-group">
-              <div class="col-md-12 text-right">
-                <button type="submit" class="btn btn-primary btn">Confirmar</button>
-              </div>
-            </div>
-          </form>
-            <!-- /.row (nested) -->
-        </div>
-          <!-- /.panel-body -->
-      </div>
-        <!-- /.panel -->
-    </div>
-      <!-- /.col-lg-12 -->
-  </div>
-  <!-- /.row -->
+        <!-- /.row -->
+        <!-- /#page-wrapper -->
+    }
 }

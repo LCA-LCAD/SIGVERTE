@@ -31,10 +31,11 @@
             <!-- Custom Fonts -->
         <link href="@routes.Assets.at("font-awesome-4.1.0/css/font-awesome.min.css")" rel="stylesheet" type="text/css">
 
-
-
         <script src="@routes.Assets.at("javascripts/jquery-2.1.3.min.js")"></script>
 
+        <script src="@routes.Assets.at("javascripts/wms-example.js")"></script>
+        <script src="@routes.Assets.at("javascripts/ol.js")"></script>
+        <link href="@routes.Assets.at("stylesheets/ol.css")" rel="stylesheet">
             <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
             <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
             <!--[if lt IE 9]>
@@ -57,39 +58,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">Sistema de Gestão de Efeitos Erosivos no Vertedouro da Barragem de Itaipu</a>
+                    <a class="navbar-brand" href="/">Sistema de Gestão de Vertedouro</a>
                 </div>
                     <!-- /.navbar-header -->
 
                 <ul class="nav navbar-top-links navbar-right">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-messages">
-                            <li>
-                                <a href="#">
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a class="text-center" href="#">
-                                </a>
-                            </li>
-                        </ul>
-                            <!-- /.dropdown-messages -->
-                    </li>
                         <!-- /.dropdown -->
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -123,80 +96,80 @@
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li class="sidebar-search">
-                                <div class="input-group custom-search-form">
+                                <!--<div class="input-group custom-search-form">
                                     <input type="text" class="form-control" placeholder="Search...">
                                     <span class="input-group-btn">
                                         <button class="btn btn-default" type="button">
                                             <i class="fa fa-search"></i>
                                         </button>
                                     </span>
-                                </div>
+                                </div> -->
                                     <!-- /input-group -->
                             </li>
                             <li>
-                                <a class="active" href="/"><i class="fa fa-dashboard fa-fw"></i> Início</a>
+                                <a class="active" href="@routes.Application.index()"><i class="fa fa-dashboard fa-fw"></i> Início</a>
                             </li>
                                 <!-- Menu nível de Amostra - Gerenciar/Visualizar-->
                             <li>
-                                <a href="#"><i class="fa fa-files-o fa-fw"></i> Amostra<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-files-o fa-fw"></i> Calha<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="/addAmostra"><i class="fa fa-edit fa-fw"></i>Gerenciar</a>
+                                        <a href="@routes.Calhas.CadastrarCalha()"><i class="fa fa-edit fa-fw"></i>Cadastrar</a>
                                     </li>
                                     <li>
-                                        <a href="morris.html"><i class="fa fa-bar-chart-o fa-fw"></i>Visualizar</a>
+                                        <a href="morris.html"><i class="fa fa-bar-chart-o fa-fw"></i>Listar</a>
                                     </li>
                                 </ul>
                                     <!-- /.nav-second-level -->
                             </li>
                                 <!-- Menu nível de Atividade - Gerenciar/Visualizar-->
                             <li>
-                                <a href="#"><i class="fa fa-files-o fa-fw"></i> Atividade<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-files-o fa-fw"></i> Laje<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="gerenciar_atividade.html"><i class="fa fa-edit fa-fw"></i>Gerenciar</a>
+                                        <a href="@routes.Lajes.CadastrarLaje()"><i class="fa fa-edit fa-fw"></i>Cadastrar</a>
                                     </li>
                                     <li>
-                                        <a href="morris.html"><i class="fa fa-bar-chart-o fa-fw"></i>Visualizar</a>
+                                        <a href="morris.html"><i class="fa fa-bar-chart-o fa-fw"></i>Listar</a>
                                     </li>
                                 </ul>
                                     <!-- /.nav-second-level -->
                             </li>
                                 <!-- Menu nível de Calha - Gerenciar/Visualizar-->
                             <li>
-                                <a href="#"><i class="fa fa-files-o fa-fw"></i> Calha<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-files-o fa-fw"></i> Campanha<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="gerenciar_calha.html"><i class="fa fa-edit fa-fw"></i>Gerenciar</a>
+                                        <a href="gerenciar_calha.html"><i class="fa fa-edit fa-fw"></i>Cadastrar</a>
                                     </li>
                                     <li>
-                                        <a href="morris.html"><i class="fa fa-bar-chart-o fa-fw"></i>Visualizar</a>
+                                        <a href="morris.html"><i class="fa fa-bar-chart-o fa-fw"></i>Listar</a>
                                     </li>
                                 </ul>
                                     <!-- /.nav-second-level -->
                             </li>
                                 <!-- Menu nível de campanha - Gerenciar/Visualizar-->
                             <li>
-                                <a href="#"><i class="fa fa-files-o fa-fw"></i> Campanha<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-files-o fa-fw"></i> Atividade<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="gerenciar_campativ.html"><i class="fa fa-edit fa-fw"></i>Gerenciar</a>
+                                        <a href="gerenciar_campativ.html"><i class="fa fa-edit fa-fw"></i>Cadastrar</a>
                                     </li>
                                     <li>
-                                        <a href="morris.html"><i class="fa fa-bar-chart-o fa-fw"></i>Visualizar</a>
+                                        <a href="morris.html"><i class="fa fa-bar-chart-o fa-fw"></i>Listar</a>
                                     </li>
                                 </ul>
                                     <!-- /.nav-second-level -->
                             </li>
                                 <!-- Menu nível de laje - Gerenciar/Visualizar-->
                             <li>
-                                <a href="#"><i class="fa fa-files-o fa-fw"></i> Laje<span class="fa arrow"></span></a>
+                                <a href="#"><i class="fa fa-files-o fa-fw"></i> Amostra<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="gerenciar_laje.html"><i class="fa fa-edit fa-fw"></i>Gerenciar</a>
+                                        <a href="gerenciar_laje.html"><i class="fa fa-edit fa-fw"></i>Cadastrar</a>
                                     </li>
                                     <li>
-                                        <a href="morris.html"><i class="fa fa-bar-chart-o fa-fw"></i>Visualizar</a>
+                                        <a href="morris.html"><i class="fa fa-bar-chart-o fa-fw"></i>Listar</a>
                                     </li>
                                 </ul>
                                     <!-- /.nav-second-level -->

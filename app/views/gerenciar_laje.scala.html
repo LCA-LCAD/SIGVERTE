@@ -1,47 +1,478 @@
-@(laj: Laje)
+@(formLaje: Form[Laje])
+    @import helper._
 
-@main("Gerenciar Laje") {
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          Gerenciar Laje
-        </div>
-        <div class="panel-body">
-          <form role="form" name="formLaje" onsubmit="return validaFormCalha()" action="/laje" method="post">
-            <div class="panel-body">
-              <form role="form">
-                <div class="form-group">
-                  <label>Laje</label>
-                  <input type="text" class="form-control" name="id" placeholder="">
+    @main("Gerenciar Laje") {
+        @helper.form(action = routes.Lajes.novaLaje) {
+            <!-- /.row -->
+            </br>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4>Gerenciar Laje</h4>
+                        </div>
+                        <div class="panel-body">
+                            <legend><h4>Cadastrar Laje</h4></legend>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-sm-2 control-label" for="NomeMaeSus">Calha: </label>
+                                    <div class="col-sm-10">
+                                        <select class="form-control col-sm-2" name="EndResLoc" id="EndResLoc">
+                                            <option>Selecione</option>
+                                            <option value="01">E-Esquerda</option>
+                                            <option value="01">C-Central</option>
+                                            <option value="01">D-Direta</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-sm-2 control-label" for="NomeCalha">Laje: </label>
+                                    <div class="col-sm-10">
+                                        <input type="select" class="form-control" name="NomeCalha" id="NomeCalha" placeholder="Insira a identificação da Laje" required="required">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-sm-2 control-label" for="NomeSuspeito">
+                                        Descrição textual sobre a laje: </label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control counted" name="DHistorico" placeholder="laje construída com cascalho X, base cimento Y... " rows="5" style="margin-bottom : 10 px ;"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-sm-2 control-label" for="NomeRes">Inserir Imagens: </label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group custom-search-form">
+                                            <input type="text" placeholder="Insira imagens relacionadas a esta laje" class="form-control">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">
+                                                    <span>Selecionar</span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <label class="col-sm-2 control-label" for="NomeRes">
+                                        Inserir Documentos Históricos: </label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group custom-search-form">
+                                            <input type="text" placeholder="Insira documentos históricos relacionados a esta laje" class="form-control">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button">
+                                                    <span>Selecionar</span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 text-right">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">
+                                    Inserir Dados Históricos Digitalizados</button>
+                                <button type="submit" class="btn btn-primary btn">Cadastrar</button>
+                            </div>
+                                <!-- /.row (nested) -->
+                        </div>
+                            <!-- /.panel-body -->
+                    </div>
+                        <!-- /.panel -->
                 </div>
-
-                <div class="form-group">
-                  <label>Descrição</label>
-                  <textarea class="form-control counted" name="descricao" placeholder="" rows="5" style="margin-bottom:10px;"></textarea>
-                </div>
-                <div class="input-group">
-                  <input type="text" class="form-control">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" name="imagens" type="button">Inserir Imagens</button>
-                  </span>
-                </div>
-              </form>
-                <!-- Form actions -->
-              <div class="form-group">
-                <div class="col-md-12 text-right">
-                  <button type="submit" class="btn btn-primary btn">Confirmar</button>
-                </div>
-              </div>
-
+                    <!-- /.col-lg-12 -->
             </div>
-          </form>
-            <!-- /.row (nested) -->
-        </div>
-          <!-- /.panel-body -->
-      </div>
-        <!-- /.panel -->
-    </div>
-      <!-- /.col-lg-12 -->
-  </div>
-}
+            <!-- /.row -->
+            <!-- /#wrapper -->
+            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Frentes de Concretagem
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="panel-body">
+                                <div class="panel with-nav-tabs panel-default">
+                                    <div class="panel-heading">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#tab1default" data-toggle="tab">Cadastrar</a></li>
+                                            <li><a href="#tab2default" data-toggle="tab">Tempo Trabalhado</a></li>
+                                            <li><a href="#tab3default" data-toggle="tab">Mão de Obra</a></li>
+                                            <li><a href="#tab4default" data-toggle="tab">Máquinas</a></li>
+                                            <li><a href="#tab5default" data-toggle="tab">Croqui</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="tab-content">
+                                                <!-- Cadastrar -->
+                                            <div class="tab-pane fade in active" id="tab1default">
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <label class="col-sm-2 control-label" for="NomeCalha">ID: </label>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" class="form-control" name="id" id="id" placeholder="" required="required">
+                                                        </div>
+                                                        <label class="col-sm-2 control-label" for="NomeCalha">
+                                                            Aut./Nº: </label>
+                                                        <div class="col-sm-4">
+                                                            <input type="text" class="form-control" name="id" id="id" placeholder="" required="required">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <label class="col-sm-2 control-label" for="NomeCalha">Data: </label>
+                                                        <div class="col-sm-4">
+                                                            <input type="date" class="form-control" name="id" id="id" placeholder="" required="required">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <label class="col-sm-2 control-label" for="Fone2">
+                                                            &nbsp&nbsp </label>
+                                                        <div class="col-sm-6">
+                                                            <div class="row">
+                                                                <input class="col-sm-1" type="checkbox" id="EndInv">
+                                                                <label class="col-sm-1 control-label">D </label>
+                                                                <input class="col-sm-1" type="checkbox" id="EndInv">
+                                                                <label class="col-sm-1 control-label">N </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <label class="col-sm-2 control-label" for="Fone2">
+                                                            Estrutura: </label>
+                                                        <div class="col-sm-6">
+                                                            <select class="form-control col-sm-2" name="EndResLoc" id="EndResLoc">
+                                                                <option>Selecione</option>
+                                                                <option value="01">LE O-01</option>
+                                                                <option value="01">LE O-02</option>
+                                                                <option value="01">LE O-03</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <label class="col-md-2 control-label" for="medicamentos">
+                                                            Atividade:</label>
+                                                        <div class="col-md-6">
+                                                            <textarea class="form-control" id="medicamentos" name="medicamentos" placeholder="" rows="5"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="submit" class="btn btn-primary btn">
+                                                            Salvar</button>
+                                                        <button type="submit" class="btn btn-primary btn">
+                                                            Próximo</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                                <!-- Tempo Trabalhado -->
+                                            <div class="tab-pane fade" id="tab2default">
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <label class="col-sm-3 control-label" for="Fone2">
+                                                            Início do Lançamento(Hr): </label>
+                                                        <div class="col-sm-2">
+                                                            <div class="row">
+                                                                <input class="col-sm-1" type="checkbox" id="EndInv">
+                                                                <label class="col-sm-1 control-label">I </label>
+                                                                <input class="col-sm-1" type="checkbox" id="EndInv">
+                                                                <label class="col-sm-1 control-label">C </label>
+                                                            </div>
+                                                            <input type="text" class="form-control" name="Fone2" id="txtFone2" onkeyup="mask_fone2();" placeholder="">
+                                                        </div>
+                                                        <label class="col-sm-3 control-label" for="Fone2">
+                                                            Término do Lançamento(Hr): </label>
+                                                        <div class="col-sm-2">
+                                                            <div class="row">
+                                                                <input class="col-sm-1" type="checkbox" id="EndInv">
+                                                                <label class="col-sm-1 control-label">C </label>
+                                                                <input class="col-sm-1" type="checkbox" id="EndInv">
+                                                                <label class="col-sm-1 control-label">T </label>
+                                                                <input type="text" class="form-control" name="Fone2" id="txtFone2" onkeyup="mask_fone2();" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class=form-group>
+                                                        <div class="row">
+                                                        </br>
+                                                            <label class="col-sm-3 control-label" for="Fone2">
+                                                                Diferença(Hr): </label>
+                                                            <div class="col-sm-2">
+                                                                <input type="text" class="form-control" name="Fone2" id="txtFone2" onkeyup="mask_fone2();" placeholder="">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel panel-default">
+                                                            <!-- Default panel contents -->
+                                                        <div class="panel-heading">Paralização</div>
+
+                                                        <ul class="list-group">
+                                                            <li class="list-group-item"><input type="checkbox" id="Par01">
+                                                                Paralização por Chuva</li>
+                                                            <li class="list-group-item"><input type="checkbox" id="Par02">
+                                                                Paralização por Neblina </li>
+                                                            <li class="list-group-item"><input type="checkbox" id="Par03">
+                                                                Outra Paralização </li>
+                                                        </ul>
+                                                    </div>
+                                                    <legend></legend>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="col-md-2 control-label" for="medicamentos">
+                                                                Volume Real(m³):</label>
+                                                            <div class="col-md-6">
+                                                                <input type="text" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="col-md-2 control-label" for="medicamentos">
+                                                                Horas Efetivas Trabalhadas(Hr):</label>
+                                                            <div class="col-md-6">
+                                                                <input type="text" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <legend><h4>Produção Horária</h4></legend>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="col-md-2 control-label" for="medicamentos">
+                                                                Real(m³/Hr):</label>
+                                                            <div class="col-md-6">
+                                                                <input type="text" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <label class="col-md-2 control-label" for="medicamentos">
+                                                                Diára(m³/Hr):</label>
+                                                            <div class="col-md-6">
+                                                                <input type="text" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="submit" class="btn btn-primary btn">
+                                                            Salvar</button>
+                                                        <button type="submit" class="btn btn-primary btn">
+                                                            Próximo</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                <!-- Mão de Obra -->
+                                            <div class="tab-pane fade" id="tab3default">
+                                                <legend>Quantidade de Trabalhadores</legend>
+                                                <div class="form-group">
+                                                    <div class="col-sm-8">
+                                                        <div class="row">
+                                                            <label class="col-sm-3 control-label" for="NBuscaSuspeito">
+                                                                Encarregados: </label>
+                                                            <div class="col-sm-3">
+                                                                <input type="number" class="form-control" autofocus="autofocus" name="NBuscaSuspeito" id="NBuscaSuspeito" placeholder="" required="required">
+                                                            </div>
+                                                            <label class="col-sm-3 control-label" for="AnoSuspeito">
+                                                                Eletricistas: </label>
+                                                            <div class="col-xs-3">
+                                                                <input type="number" min="2010" max="2100" class="form-control" name="AnoSuspeito" id="AnoSuspeito" placeholder="" required="required">
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <label class="col-sm-3 control-label" for="NBuscaSuspeito">
+                                                                Feitores: </label>
+                                                            <div class="col-sm-3">
+                                                                <input type="number" class="form-control" autofocus="autofocus" name="NBuscaSuspeito" id="NBuscaSuspeito" placeholder="" required="required">
+                                                            </div>
+                                                            <label class="col-sm-3 control-label" for="AnoSuspeito">
+                                                                Carpinteiros: </label>
+                                                            <div class="col-sm-3">
+                                                                <input type="number" min="2010" max="2100" class="form-control" name="AnoSuspeito" id="AnoSuspeito" placeholder="" required="required">
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <label class="col-sm-3 control-label" for="NBuscaSuspeito">
+                                                                Vibradoristas: </label>
+                                                            <div class="col-sm-3">
+                                                                <input type="number" class="form-control" autofocus="autofocus" name="NBuscaSuspeito" id="NBuscaSuspeito" placeholder="" required="required">
+                                                            </div>
+                                                            <label class="col-sm-3 control-label" for="AnoSuspeito">
+                                                                Armadores: </label>
+                                                            <div class="col-sm-3">
+                                                                <input type="number" min="2010" max="2100" class="form-control" name="AnoSuspeito" id="AnoSuspeito" placeholder="" required="required">
+                                                            </div>
+                                                        </div>
+                                                        <br>
+                                                        <div class="row">
+                                                            <label class="col-sm-3 control-label" for="NBuscaSuspeito">
+                                                                Serventes: </label>
+                                                            <div class="col-sm-3">
+                                                                <input type="number" class="form-control" autofocus="autofocus" name="NBuscaSuspeito" id="NBuscaSuspeito" placeholder="" required="required">
+                                                            </div>
+                                                            <label class="col-sm-3 control-label" for="AnoSuspeito">
+                                                                Pedreiros: </label>
+                                                            <div class="col-sm-3">
+                                                                <input type="number" min="2010" max="2100" class="form-control" name="AnoSuspeito" id="AnoSuspeito" placeholder="" required="required">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="submit" class="btn btn-primary btn">
+                                                            Salvar</button>
+                                                        <button type="submit" class="btn btn-primary btn">
+                                                            Próximo</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                <!-- Máquinas -->
+                                            <div class="tab-pane fade" id="tab4default">
+                                                <legend>Quantidade de Máquinas</legend>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <label class="col-sm-3 control-label" for="NBuscaSuspeito">
+                                                            Vaporizadores: </label>
+                                                        <div class="col-sm-3">
+                                                            <input type="number" class="form-control" autofocus="autofocus" name="NBuscaSuspeito" id="NBuscaSuspeito" placeholder="" required="required">
+                                                        </div>
+                                                        <label class="col-sm-3 control-label" for="AnoSuspeito">
+                                                            Chopões: </label>
+                                                        <div class="col-sm-3">
+                                                            <input type="number" min="2010" max="2100" class="form-control" name="AnoSuspeito" id="AnoSuspeito" placeholder="" required="required">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <legend></legend>
+                                                <input type="checkbox" id="Par01"> <label class="control-label">
+                                                Vibradores Efetivamente Trabalhando</label>
+                                                <br>
+                                                <input type="checkbox" id="Par01"> <label class="control-label">
+                                                Máquinas de Lançamento</label>
+                                                <br>
+                                                <input type="checkbox" id="Par01"> <label class="control-label">
+                                                Transporte</label>
+                                                <div class="form-group">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="submit" class="btn btn-primary btn">
+                                                            Salvar</button>
+                                                        <button type="submit" class="btn btn-primary btn">
+                                                            Próximo</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                <!-- Croqui -->
+                                            <div class="tab-pane fade" id="tab5default">
+                                                <legend>Croqui do Andamento da Concretagem</legend>
+                                                <label>Outras Informações</label>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <textarea class="form-control" id="medicamentos" name="medicamentos" placeholder="" rows="5"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <label>Inserir Documento/Imagens</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default" type="button">
+                                                            Selecionar</button>
+                                                    </span>
+                                                </div>
+                                                <label>Galeria</label>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="well">
+                                                            <div id="myCarousel" class="carousel fdi-Carousel slide">
+                                                                    <!-- Carousel items -->
+                                                                <div class="carousel fdi-Carousel slide" id="eventCarousel" data-interval="0">
+                                                                    <div class="carousel-inner onebyone-carosel">
+                                                                        <div class="item active">
+                                                                            <div class="col-md-4">
+                                                                                <a href="#"><img src="img/ex1.jpg" class="img-responsive center-block"></a>
+                                                                                <div class="text-center">1</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="item">
+                                                                            <div class="col-md-4">
+                                                                                <a href="#"><img src="img/ex2.jpg" class="img-responsive center-block"></a>
+                                                                                <div class="text-center">2</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="item">
+                                                                            <div class="col-md-4">
+                                                                                <a href="#"><img src="img/ex3.jpg" class="img-responsive center-block"></a>
+                                                                                <div class="text-center">3</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="item">
+                                                                            <div class="col-md-4">
+                                                                                <a href="#"><img src="img/ex4.jpg" class="img-responsive center-block"></a>
+                                                                                <div class="text-center">4</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="item">
+                                                                            <div class="col-md-4">
+                                                                                <a href="#"><img src="img/ex.5.jpg" class="img-responsive center-block"></a>
+                                                                                <div class="text-center">5</div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="item">
+                                                                            <div class="col-md-4">
+                                                                                <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
+                                                                                <div class="text-center">6</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <a class="left carousel-control" href="#eventCarousel" data-slide="prev"></a>
+                                                                    <a class="right carousel-control" href="#eventCarousel" data-slide="next"></a>
+                                                                </div>
+                                                                    <!--/carousel-inner-->
+                                                            </div><!--/myCarousel-->
+                                                        </div><!--/well-->
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-12 text-right">
+                                                        <button type="submit" class="btn btn-primary btn">
+                                                            Salvar</button>
+                                                        <button type="submit" class="btn btn-primary btn">
+                                                            Finalizar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <!-- /.row (nested) -->
+                            </div>
+                                <!-- /.panel-body -->
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- /#wrapper -->
+        }
+    }

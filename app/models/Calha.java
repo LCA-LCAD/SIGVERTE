@@ -10,14 +10,13 @@ import javax.persistence.OneToMany;
 import java.util.List;
 
 /**
- * Created by ftominc on 29/04/15.
+ * Created by RSenger on 29/04/15.
  */
 @Entity
 public class Calha extends Model {
     @Id
     private Long id;
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<DadoHistorico> dadosHistoricos;
+    private String dadosHistoricos;
     @OneToMany(cascade = CascadeType.ALL)
     private List<Laje> lajes;
 
@@ -29,11 +28,11 @@ public class Calha extends Model {
         this.id = id;
     }
 
-    public List<DadoHistorico> getDadosHistoricos() {
+    public String getDadosHistoricos() {
         return dadosHistoricos;
     }
 
-    public void setDadosHistoricos(List<DadoHistorico> dadosHistoricos) {
+    public void setDadosHistoricos(String dadosHistoricos) {
         this.dadosHistoricos = dadosHistoricos;
     }
 

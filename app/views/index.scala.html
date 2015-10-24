@@ -1,5 +1,11 @@
 @()
 
 @main("Welcome to Play") {
-	<h1>Hello World</h1>
+	<h1>To do -> Mapa GEO</h1>
+	<div id="map"></div>
+
+	<script src="@routes.Assets.at("javascripts/wms-example.js")"></script>
+	<script src="@routes.Assets.at("javascripts/ol.js")"></script>
+	<link href="@routes.Assets.at("stylesheets/ol.css")" rel="stylesheet">
 }
+
