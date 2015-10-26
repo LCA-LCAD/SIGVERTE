@@ -1,11 +1,26 @@
 @()
 
 @main("Welcome to Play") {
-	<h1>To do -> Mapa GEO</h1>
-	<div id="map"></div>
-
-	<script src="@routes.Assets.at("javascripts/wms-example.js")"></script>
+	<!-- <div id="map"></div> -->
+	</br>
+	<div class="row">
+		<div class="col-lg-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>Visão Geral</h4>
+				</div>
+				<div class="panel-body">
+					<div id="map"></div>
+						<!-- /.row (nested) -->
+				</div>
+					<!-- /.panel-body -->
+			</div>
+				<!-- /.panel -->
+		</div>
+			<!-- /.col-lg-12 -->
+	</div>
 	<script src="@routes.Assets.at("javascripts/ol.js")"></script>
 	<link href="@routes.Assets.at("stylesheets/ol.css")" rel="stylesheet">
+	<script src="@routes.Assets.at("javascripts/Calha-esquerda.js")"></script>
 }
 

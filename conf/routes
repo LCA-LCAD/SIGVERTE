@@ -13,3 +13,4 @@ POST         /addLaje            controllers.Lajes.novaLaje()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file        controllers.Assets.at(path="/public", file)
+GET         /javascripts/Calha-esquerda.geojson controllers.Assets.at(path = "/public", file)
