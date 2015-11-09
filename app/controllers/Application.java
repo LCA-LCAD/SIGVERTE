@@ -4,6 +4,7 @@ import com.avaje.ebean.Ebean;
 import models.Calha;
 import models.Coleta;
 import play.Play;
+import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
@@ -21,7 +22,7 @@ public class Application extends Controller {
         Http.MultipartFormData body = request().body().asMultipartFormData();
         Http.MultipartFormData.FilePart picture = body.getFile("picture");
         if(picture !=null){
-            String calhaId = form().bindFromRequest().get("calhaId");
+            String calhaId = Form.form(Calha.class).bindFromRequest().get().getId().toString();
             String imagem = calhaId + ".png";
             File file = picture.getFile();
 
