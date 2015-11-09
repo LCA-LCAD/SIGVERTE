@@ -10,6 +10,9 @@ GET         /addCalha            controllers.Calhas.CadastrarCalha()
 POST        /addCalha            controllers.Calhas.novaCalha()
 GET         /addLaje            controllers.Lajes.CadastrarLaje()
 POST         /addLaje            controllers.Lajes.novaLaje()
+POST        /upload             controllers.Application.upload()
+GET        /upload             controllers.Application.formImage()
+POST       /filmesUpload controllers.Application.upload()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file        controllers.Assets.at(path="/public", file)

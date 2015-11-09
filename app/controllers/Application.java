@@ -1,32 +1,43 @@
 package controllers;
 
+import com.avaje.ebean.Ebean;
+import models.Calha;
 import models.Coleta;
-import play.*;
-import play.api.mvc.*;
-import play.data.format.Formats;
-import play.mvc.*;
-
+import play.Play;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 import views.html.*;
-
-
-import play.data.Form;
-
-import java.text.DateFormat;
+import java.io.File;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-
-import play.db.ebean.Model;
-
-import javax.swing.text.DateFormatter;
-
-import static play.libs.Json.*;
 
 public class Application extends Controller {
+
+    public static Result upload(){
+
+        Http.MultipartFormData body = request().body().asMultipartFormData();
+        Http.MultipartFormData.FilePart picture = body.getFile("picture");
+        if(picture !=null){
+            String calhaId = form().bindFromRequest().get("calhaId");
+            String imagem = calhaId + ".png";
+            File file = picture.getFile();
+
+            String diretorioDeImagens = Play.application().configuration().getString("diretorioDeImagens");
+            file.renameTo(new File(diretorioDeImagens,imagem));
+            return ok(views.html.upload.render("Arquivo  \"" + imagem + "\" foi carregado com sucesso!"));
+        }else{
+            flash("error", "Erro ao fazer upload");
+            return redirect(routes.Application.index());
+        }
+    }
+
+    public static Result formImage() {
+        List<Calha> calhas = Ebean.createQuery(Calha.class).findList();
+        return ok(uploadCalhaPic.render(calhas));
+    }
 
     public static Result index() {
         return ok(index.render());

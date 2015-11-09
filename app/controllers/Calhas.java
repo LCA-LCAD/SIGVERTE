@@ -1,12 +1,13 @@
 package controllers;
 
-import models.*;
-import play.data.Form;
-import play.mvc.*;
-import views.html.*;
 import com.avaje.ebean.Ebean;
-
+import models.Calha;
+import play.mvc.Controller;
+import play.mvc.Result;
+import views.html.*;
+import play.data.Form;
 import java.util.List;
+
 
 /**
  * Created by lcad on 23/10/15.
@@ -25,11 +26,12 @@ public class Calhas extends Controller{
         }
         Calha calha = formCalha.get();
         calha.save();
-        return redirect(routes.Application.index());
+        List<Calha> calhas = Ebean.createQuery(Calha.class).findList();
+        return ok(uploadCalhaPic.render(calhas));
     }
 
     /*public static Result index(){
         List<Calha> calhas = Ebean.createQuery(Calha.class).findList();
-        return ok(listascalhas.render(calhas));
+        return ok(uploadCalhaPic.render(calhas));
     }*/
 }
